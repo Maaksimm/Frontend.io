@@ -1,0 +1,724 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: #0b0b0b;
+	color: #eaeaea;
+	line-height: 1.5;
+	scroll-behavior: smooth;
+}
+
+.container {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* ========== НАВІГАЦІЯ ========== */
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 20px 0;
+	border-bottom: 1px solid #2c2c2c;
+	position: relative;
+}
+
+.logo {
+	font-size: 1.8rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	background: linear-gradient(135deg, #d4af37, #f5e5a3);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.nav-links {
+	display: flex;
+	gap: 32px;
+	list-style: none;
+	transition: all 0.3s ease;
+}
+
+.nav-links a {
+	color: #ddd;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s;
+	font-size: 1rem;
+}
+
+.nav-links a:hover {
+	color: #e4b81f;
+}
+
+.burger-menu {
+	display: none;
+	flex-direction: column;
+	cursor: pointer;
+	z-index: 100;
+}
+
+.burger-menu span {
+	width: 28px;
+	height: 3px;
+	background-color: #e4b81f;
+	margin: 4px 0;
+	transition: 0.3s;
+	border-radius: 3px;
+}
+
+@media (max-width: 999px) {
+	.burger-menu {
+		display: flex;
+	}
+
+	.nav-links {
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 70%;
+		max-width: 300px;
+		height: 100vh;
+		background-color: #111;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 32px;
+		transition: right 0.3s ease;
+		z-index: 99;
+		box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+		border-left: 2px solid #b8860b;
+	}
+
+	.nav-links.active {
+		right: 0;
+	}
+
+	.nav-links li {
+		margin: 0;
+	}
+
+	.nav-links a {
+		font-size: 1.3rem;
+	}
+
+	/* Анімація бургера при активному меню */
+	.burger-menu.active span:nth-child(1) {
+		transform: rotate(45deg) translate(8px, 8px);
+	}
+
+	.burger-menu.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.burger-menu.active span:nth-child(3) {
+		transform: rotate(-45deg) translate(7px, -7px);
+	}
+}
+
+/* ========== КНОПКИ ========== */
+.btn {
+	display: inline-block;
+	background-color: #b8860b;
+	color: #0b0b0b;
+	font-weight: 700;
+	padding: 10px 24px;
+	border-radius: 40px;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.btn-outline {
+	background: transparent;
+	border: 2px solid #b8860b;
+	color: #b8860b;
+}
+
+.btn-outline:hover {
+	background: #eb0d53;
+	color: #ffffff;
+}
+
+.btn-primary {
+	background: #eb0d53;
+	color: #ffffff;
+}
+
+.btn-primary:hover {
+	background: #d4af37;
+	transform: scale(1.02);
+}
+
+/* ========== HERO ========== */
+.hero {
+	text-align: center;
+	padding: 60px 0 40px;
+}
+
+.hero h1 {
+	font-size: 3.2rem;
+	font-weight: 800;
+	margin-bottom: 16px;
+}
+
+.hero p {
+	font-size: 1.2rem;
+	max-width: 700px;
+	margin: 0 auto;
+	color: #b0b0b0;
+}
+
+/* ========== СЕКЦІЇ ========== */
+section {
+	margin: 60px 0;
+}
+
+.section-title {
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 32px;
+	border-left: 5px solid #b8860b;
+	padding-left: 20px;
+	text-align: center;
+}
+
+/* ========== ТАБЛИЦЯ КОНЦЕРТІВ ========== */
+.concerts-table-wrapper {
+	overflow-x: auto;
+}
+
+.concerts-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #141414;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.concerts-table th,
+.concerts-table td {
+	padding: 16px 20px;
+	text-align: left;
+	border-bottom: 1px solid #2a2a2a;
+}
+
+.concerts-table th {
+	background-color: #1f1f1f;
+	font-weight: 600;
+	color: #e4b81f;
+}
+
+.concerts-table tr:last-child td {
+	border-bottom: none;
+}
+
+.btn-ticket {
+	background: #eb0d53;
+	padding: 6px 16px;
+	border-radius: 30px;
+	font-size: 0.85rem;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+	transition: 0.2s;
+	color: #ffffff;
+}
+
+.btn-ticket:hover {
+	background: #d4af37;
+	transform: scale(1.02);
+}
+
+.global-ticket-wrapper {
+	margin-top: 16px;
+	text-align: center;
+}
+
+/* ========== УЧАСНИКИ ========== */
+.members-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 42px;
+	justify-content: center;
+}
+
+.member-person {
+	display: flex;
+	flex-direction: column;
+	border-radius: 20px;
+	overflow: hidden;
+	background: #141414;
+	transition: transform 0.2s;
+	max-width: 250px;
+	width: 100%;
+}
+
+.member-person:hover {
+	transform: translateY(-5px);
+}
+
+.member-person_image {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	display: block;
+}
+
+.member-card {
+	background: #141414;
+	padding: 20px 28px;
+	text-align: center;
+	min-width: 150px;
+}
+
+.member-card h3 {
+	font-size: 1.3rem;
+	margin-bottom: 5px;
+}
+
+/* ========== ІСТОРІЯ ========== */
+.history-block {
+	background: #111;
+	padding: 28px;
+	border-radius: 28px;
+	line-height: 1.6;
+	gap: 40px;
+	width: 100%;
+}
+
+.history-block__section-title {
+	display: flex;
+}
+
+/* ========== КОНТАКТИ ========== */
+.contact-subtitle {
+	font-size: 1.1rem;
+	color: #b0b0b0;
+	margin-bottom: 32px;
+	text-align: center;
+}
+
+.contacts-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 48px;
+	background: #111;
+	border-radius: 32px;
+	padding: 48px;
+}
+
+.contact-form {
+	flex: 1;
+	min-width: 280px;
+}
+
+.contact-form h3 {
+	font-size: 1.5rem;
+	margin-bottom: 24px;
+	color: #e4b81f;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+	color: #ddd;
+}
+
+.form-group input,
+.form-group textarea {
+	width: 100%;
+	padding: 14px 18px;
+	background: #1e1e1e;
+	border: 1px solid #333;
+	border-radius: 16px;
+	color: #fff;
+	font-family: inherit;
+	font-size: 1rem;
+	transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+	outline: none;
+	border-color: #b8860b;
+	box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.error-msg {
+	color: #e67e22;
+	font-size: 0.8rem;
+	margin-top: 6px;
+	display: block;
+	min-height: 20px;
+}
+
+.submit-btn {
+	width: 100%;
+	padding: 14px;
+	font-size: 1rem;
+	margin-top: 10px;
+}
+
+.address-block {
+	background: #141414;
+	padding: 32px;
+	border-radius: 32px;
+	flex: 1;
+	min-width: 260px;
+}
+
+.address-block h3 {
+	font-size: 1.5rem;
+	margin-bottom: 24px;
+	color: #e4b81f;
+}
+
+.location-image-container {
+	margin-top: 24px;
+	text-align: center;
+}
+
+.location-image {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	border-radius: 16px;
+	margin-bottom: 16px;
+	cursor: pointer;
+	transition:
+		transform 0.3s,
+		box-shadow 0.3s;
+	border: 2px solid #333;
+}
+
+.location-image:hover {
+	transform: scale(1.02);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+	border-color: #b8860b;
+}
+
+.map-btn {
+	width: 100%;
+	padding: 12px;
+	font-size: 0.9rem;
+}
+
+/* ========== ПОПАП ========== */
+.popup-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(4px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	visibility: hidden;
+	opacity: 0;
+	transition:
+		visibility 0.2s,
+		opacity 0.2s;
+}
+
+.popup-overlay.active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup-card {
+	background: #1c1c1c;
+	max-width: 500px;
+	width: 90%;
+	padding: 32px 24px;
+	border-radius: 40px;
+	text-align: center;
+	box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+	border: 1px solid #b8860b;
+}
+
+.popup-card h3 {
+	font-size: 1.8rem;
+	margin-bottom: 12px;
+	color: #e4b81f;
+}
+
+.popup-card p {
+	margin-bottom: 24px;
+	color: #ddd;
+}
+
+.popup-card .popup-image {
+	width: 100%;
+	max-width: 400px;
+	border-radius: 16px;
+	margin: 16px 0;
+}
+
+.popup-close {
+	background: #b8860b;
+	border: none;
+	padding: 10px 28px;
+	border-radius: 40px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: 0.2s;
+}
+
+.popup-close:hover {
+	background: #d4af37;
+	transform: scale(1.02);
+}
+
+/* ========== ФУТЕР ========== */
+footer {
+	border-top: 1px solid #2c2c2c;
+	padding: 48px 0 32px;
+	margin-top: 60px;
+	background: #0a0a0a;
+}
+
+.footer-container {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+.footer-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	text-align: center;
+}
+
+.footer-copyright p {
+	color: #888;
+	font-size: 0.9rem;
+	margin: 0;
+}
+
+.footer-contacts {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.footer-email,
+.footer-phone {
+	color: #b0b0b0;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: color 0.2s;
+}
+
+.footer-email:hover,
+.footer-phone:hover {
+	color: #e4b81f;
+}
+
+.footer-separator {
+	color: #555;
+	font-size: 1rem;
+}
+
+.footer-social {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.social-link {
+	color: #b0b0b0;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: all 0.2s;
+	position: relative;
+}
+
+.social-link:hover {
+	color: #e4b81f;
+	transform: translateY(-2px);
+}
+
+.social-link.instagram:hover {
+	color: #e4405f;
+}
+
+.social-link.youtube:hover {
+	color: #ff0000;
+}
+
+.social-link.facebook:hover {
+	color: #1877f2;
+}
+
+.social-separator {
+	color: #555;
+	font-size: 1rem;
+}
+
+/* ========== АДАПТИВНІСТЬ ========== */
+@media (max-width: 900px) {
+	.contacts-wrapper {
+		flex-direction: column;
+		padding: 32px;
+		gap: 32px;
+	}
+
+	.contact-subtitle {
+		font-size: 1rem;
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 0 16px;
+	}
+
+	.hero h1 {
+		font-size: 2.2rem;
+	}
+
+	.section-title {
+		font-size: 1.7rem;
+	}
+
+	.concerts-table th,
+	.concerts-table td {
+		padding: 12px 12px;
+		font-size: 0.85rem;
+	}
+
+	.btn-ticket {
+		padding: 4px 12px;
+		font-size: 0.75rem;
+	}
+
+	.members-grid {
+		justify-content: center;
+	}
+
+	.contacts-wrapper {
+		flex-direction: column;
+	}
+
+	footer {
+		padding: 36px 0 24px;
+	}
+
+	.footer-content {
+		gap: 16px;
+	}
+
+	.footer-contacts {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.footer-separator {
+		display: none;
+	}
+
+	.footer-social {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.social-separator {
+		display: none;
+	}
+
+	.footer-copyright p {
+		font-size: 0.8rem;
+	}
+
+	.footer-email,
+	.footer-phone,
+	.social-link {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.contacts-wrapper {
+		padding: 20px;
+	}
+
+	.address-block {
+		padding: 20px;
+	}
+
+	.contact-form h3,
+	.address-block h3 {
+		font-size: 1.3rem;
+	}
+
+	.concerts-table thead {
+		display: none;
+	}
+
+	.concerts-table tr {
+		display: block;
+		margin-bottom: 16px;
+		border-bottom: 2px solid #2c2c2c;
+	}
+
+	.concerts-table td {
+		display: block;
+		text-align: right;
+		padding-left: 50%;
+		position: relative;
+		border-bottom: 1px solid #2a2a2a;
+	}
+
+	.concerts-table td:last-child {
+		border-bottom: none;
+	}
+
+	.concerts-table td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 12px;
+		width: 45%;
+		text-align: left;
+		font-weight: 600;
+		color: #e4b81f;
+	}
+}
+
+@media (max-width: 480px) {
+	.footer-container {
+		padding: 0 16px;
+	}
+
+	footer {
+		padding: 28px 0 20px;
+	}
+}
